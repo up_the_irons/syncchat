@@ -22,7 +22,49 @@
 extern unsigned _stklen = 20000U; /* Increase the stack  - for Turbo C++ */
 #endif
 
+/* I don't remember what SP was...  something in TC++
+ * I'm going to assume it was a space, for now... */
+#define SP ' '
+
 #include "globals.h"
+
+struct actions *action[500];
+struct games_s *games[25];
+struct channel_s *channel[99];
+
+char done;
+char snc_dir[256];
+char old_dir[256];
+char snc_root[256];
+char bbs_soft_dir[128];
+char toggles[10];
+char bbs_software[64];
+char onfile[81];
+char entry_msg[128];
+char exit_msg[128];
+int num_of_actions;
+int actions_on;
+int dots_again;
+int num_of_rooms;
+int cur_room_num;
+int reged;
+int num_of_games;
+int x_pos, y_pos;
+int act_level;
+char* generic_buf;
+
+char *l1, *l2, *l3, *l4, *l5, *l6,  *l7, *l8, *l9,
+     *l10, *l11, *l12, *l13, *l14, *l15, *l16, *l17, *l18, *l19,
+		 *l20, *l21, *l22, *l23, *l24, *l25, *l26, *l27, *l28, *l29,
+     *l30, *l31, *l32, *l33, *l34, *l35, *l36, *l37, *l38, *l39,
+     *l40, *l41, *l42, *l43, *l44, *l45, *l46, *l47, *l48, *l49,
+     *l50, *l51, *l52, *l53, *l54, *l55, *l56, *l57, *l58, *l59,
+     *l60, *l61, *l62, *l63, *l64, *l65, *l66, *l67, *l68, *l69,
+     *l70, *l71, *l72, *l73, *l74, *l75, *l76, *l77, *l78, *l79,
+     *l80, *l81, *l82, *l83, *l84, *l85, *l86, *l87, *l88, *l89,
+     *l90, *l91, *l92, *l93, *l94, *l95, *l96, *l97, *l98, *l99,
+     *l100, *l101, *l102, *l103, *l104, *l105, *l106, *l107,
+     *l108, *l109, *l110;
 
 int main(int argc, char* argv[])
 {
@@ -108,7 +150,7 @@ int main(int argc, char* argv[])
 
   /* Make temp dir*/
   snc_dir[strlen(snc_dir) - 1] = 0;
-  mkdir(snc_dir);
+  _mkdir(snc_dir);
   backslash(snc_dir);
   /* End */
 
@@ -146,7 +188,7 @@ int main(int argc, char* argv[])
   /* Check for gender (cause fuckin' door.sys doesn't have it) */
 	if(strcmpi(bbs_software, "0") != 0)
 	{
-	mkdir("SEX"); /* Doesn't hurt if directory is already there */
+	_mkdir("SEX"); /* Doesn't hurt if directory is already there */
 	sprintf(buff, "SEX%c%i.*", BACKSLASH, user_number);
 	i = findfirst(buff,&ffblk,0);
 	if(!i)
@@ -168,7 +210,7 @@ int main(int argc, char* argv[])
 	}
 
 	/* Make TMP dir*/
-	mkdir("TMP");
+	_mkdir("TMP");
 	/* End */
 
 	/* Make new LOG */
@@ -195,7 +237,7 @@ int main(int argc, char* argv[])
 	strcat(buff, uls);
 
 	 #ifdef __WATCOMC__
-	 if(mkdir(buff) != 0)
+	 if(_mkdir(buff) != 0)
 		 {
 		 strcat(buff, "\\*.*");
 		 d = _dos_findfirst(buff, _A_NORMAL, &fileinfo);
@@ -213,7 +255,7 @@ int main(int argc, char* argv[])
 		 }
 
 		#else 
-  	if(mkdir(buff) != 0)
+  	if(_mkdir(buff) != 0)
 	  	{
 
 			#ifdef __unix__
@@ -327,7 +369,7 @@ int main(int argc, char* argv[])
 				strcpy(channel[d]->dir, buff);
 				strcat(channel[d]->dir, "CHAN");
 				/* Make all the dirs for different sysop defined public */
-				mkdir(channel[d]->dir);
+				_mkdir(channel[d]->dir);
 				}
 			truncsp(channel[d]->name);
 			truncsp(channel[d]->sl);
@@ -3676,7 +3718,7 @@ void get_e_msgs(void)
 	memset(entry_msg, 0, 128);
 	memset(exit_msg, 0, 128);
 
-  mkdir("EMSGS"); /* If dir already exists, nothing bad happens... */
+  _mkdir("EMSGS"); /* If dir already exists, nothing bad happens... */
   sprintf(e_file, "EMSGS%c%i.EM", BACKSLASH, user_number);
   if(fexist(e_file))
     {
@@ -3701,7 +3743,7 @@ void write_e_msgs(void)
   char e_file[128];
   int fp;
 
-  mkdir("EMSGS"); /* If dir already exists, nothing bad happens... */
+  _mkdir("EMSGS"); /* If dir already exists, nothing bad happens... */
   sprintf(e_file, "EMSGS%c%i.EM", BACKSLASH, user_number);
   fp = nopen(e_file, O_WRONLY|O_CREAT);
   if(fp == -1)

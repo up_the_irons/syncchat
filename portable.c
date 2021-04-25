@@ -1,19 +1,9 @@
 #include "portable.h"
+#include "xsdk.h"
 
 #define DEBUG
 
 #ifdef __unix__
-
-int eof(int handle) {
-	char buf[1];
-
-	if(read(handle,buf,1) < 1) {
-		return 1;
-	} else {
-		lseek(handle, -1, SEEK_CUR);
-		return 0;
-	}
-}
 
 /* A very weak version of Turbo C++/MSDOS findfirst, findnext functions.
  * Only supports '*' (wildcard) at the end of a filename. 

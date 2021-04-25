@@ -9,5 +9,4 @@ OBJS	:=	$(MTOBJODIR)$(DIRSEP)config$(OFILE) \
 					$(MTOBJODIR)$(DIRSEP)sysfunc$(OFILE) \
 					$(MTOBJODIR)$(DIRSEP)tg$(OFILE) \
 					$(MTOBJODIR)$(DIRSEP)xsdk$(OFILE) \
-					$(MTOBJODIR)$(DIRSEP)xsdkvars$(OFILE) \
-					$(MTOBJODIR)$(DIRSEP)xsdkwrap$(OFILE)
+					$(MTOBJODIR)$(DIRSEP)xsdkvars$(OFILE)

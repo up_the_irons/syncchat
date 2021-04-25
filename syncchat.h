@@ -3,9 +3,6 @@
 #ifndef _SYNCCHAT_H
 #define _SYNCCHAT_H
 
-#define GLOBAL extern	/* turns XSDKVAR.C into a header file */
-#include "xsdkvars.c" /* New Addition */
-
 #ifdef __cplusplus
 	extern "C" {
 #endif

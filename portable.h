@@ -25,13 +25,12 @@ struct ffblk {
 
 #ifdef __unix__
 
-#define mkdir(dir)      mkdir(dir,0777)
+#define _mkdir(dir)      mkdir(dir,0755)
 #define strcmpi(s1,s2)  strcasecmp(s1,s2)
 
 #include <stdio.h>
 #include <unistd.h>
 
-int eof(int handle);
 int findfirst(const char* pathname, struct ffblk *ffblk, int attrib);
 int findnext(struct ffblk *ffblk);
 
