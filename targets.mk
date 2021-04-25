@@ -1,3 +1,3 @@
-all: $(EXEODIR) $(LIBODIR) \
-		$(EXEODIR)$(SLASH)syncchat
+SYNCCHAT		=	$(EXEODIR)$(DIRSEP)syncchat$(EXEFILE)
 
+all: xpdev xpdev-mt $(MTOBJODIR) $(EXEODIR) $(SYNCCHAT)
