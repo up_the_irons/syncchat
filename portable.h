@@ -23,12 +23,6 @@ struct ffblk {
 
 #endif
 
-#if defined(__unix__)
-  #define BACKSLASH '/'
-#else /* MS-DOS based OS */
-  #define BACKSLASH '\\'
-#endif
-
 #ifdef __unix__
 
 #define mkdir(dir)      mkdir(dir,0777)
