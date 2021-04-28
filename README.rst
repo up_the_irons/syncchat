@@ -49,6 +49,17 @@ or if you want to chat over a beer 😆
 
 .. _ARP Networks: https://arpnetworks.com
 
+Registration Code
+-----------------
+
+To create a registration code::
+
+  $ make reggie
+  ...
+  $ ./reggie
+
+and then follow the prompts.
+
 Author
 ------
 

@@ -53,3 +53,5 @@ dkms.conf
 
 # Other
 gcc.linux.x64.exe.debug/
+reggie
+SYNCCHAT.CFG

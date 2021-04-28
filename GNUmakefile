@@ -25,3 +25,6 @@ $(SYNCCHAT): $(OBJS)
 	@echo Linking $@
    endif
 	$(QUIET)$(CC) $(MT_LDFLAGS) $(XPDEV-MT_LDFLAGS) $(LDFLAGS) $^ -o $@ $(XPDEV-MT_LIBS)
+
+reggie: reggie.o
+	$(CC) -o reggie reggie.c
